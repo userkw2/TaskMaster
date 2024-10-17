@@ -1,6 +1,6 @@
-### H3 TaskMaster
+## TaskMaster
 
-*TaskMaster* is a task management system designed to help users manage their daily tasks efficiently. Users can create, update, delete, and toggle the status of tasks, all within an intuitive and simple interface.
+***TaskMaster*** is a task management system designed to help users manage their daily tasks efficiently. Users can create, update, delete, and toggle the status of tasks, all within an intuitive and simple interface.
 
 ## Table of Contents
 
@@ -25,19 +25,32 @@ To run the project locally, follow these steps:
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/task-manager.git
-    cd task-manager
+    git clone https://github.com/userkw2/TaskMaster.git
+    cd TaskMaster
     ```
 
 2. **Database setup**:
     - Create a MySQL database named `task_manager`.
-    - The database configuration (host, user, password, database) is done within the `login.php`, `register.php`, and `task_api.php` files, so no `.env` file is needed.
-    - Import the provided SQL file `task_manager.sql` to create the necessary tables.
+    - The database configuration (host, user, password, database) is done within the `login.php`, `register.php`, and `task_api.php` files
+    - Inside the database `task_manager`, you should create two tables:
+
+1. **users** table with the following columns:
+   - `id` (INT, PRIMARY KEY, AUTO_INCREMENT)
+   - `username` (VARCHAR)
+   - `password` (VARCHAR)
+
+2. **tasks** table with the following columns:
+   - `id` (INT, PRIMARY KEY, AUTO_INCREMENT)
+   - `user_id` (INT, FOREIGN KEY referencing users(id))
+   - `title` (VARCHAR)
+   - `description` (TEXT)
+   - `status` (VARCHAR or ENUM for task status)
+
 
 3. **Run the project**:
     - If you're using XAMPP, place the project folder in the `htdocs` directory.
     - Start Apache from the XAMPP control panel.
-    - Access the app at `http://localhost/task-manager`.
+    - Access the app at `http://localhost/task/login.php`.
 
 ## Usage
 
@@ -79,7 +92,3 @@ Planned future enhancements include:
 ## Contributors
 
 - **Kawthar Elkis** – Developer
-
----
-
-This version reflects the direct handling of the database within your PHP files and makes it clear that there's no need for external environment configuration. Let me know if you want to add anything else!
